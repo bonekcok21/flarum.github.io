@@ -1,6 +1,6 @@
 <?php
 
-$file = "filemu.php";
+$file = "up.php";
 
 $s = scandir(getcwd());
 
